@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>指标管理平台 — Design System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 左侧边栏 -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-logo"></div>
+      <div class="brand-text">
+        <strong>指标管理平台</strong>
+        <span>Design System</span>
+      </div>
+    </div>
+
+    <div class="sidebar-search">
+      <svg class="search-icon" width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.2"/><path d="M9.5 9.5L13 13" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <input type="text" id="searchInput" placeholder="搜索 Token..." />
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">TOKEN 分类</div>
+      <ul class="category-list" id="categoryList"></ul>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">TOKEN 组</div>
+      <ul class="group-list" id="groupList"></ul>
+    </div>
+
+    <div class="sidebar-bottom">
+      <button class="dark-mode-btn" id="darkModeBtn">🌙 Dark Mode</button>
+    </div>
+  </aside>
+
+  <!-- 中间主内容 -->
+  <main class="main-panel" id="mainPanel">
+    <div class="main-header">
+      <div class="main-header-left">
+        <h1 class="main-title" id="mainTitle">Color Token</h1>
+        <span class="token-count" id="tokenCount">0 tokens</span>
+      </div>
+      <div class="main-header-right">
+        <div class="view-toggle">
+          <button class="view-btn" id="viewGrid" title="网格视图">Grid</button>
+          <button class="view-btn active" id="viewList" title="列表视图">List</button>
+        </div>
+        <button class="export-btn" id="exportBtn">Export</button>
+      </div>
+    </div>
+    <div class="main-body" id="mainBody"></div>
+  </main>
+
+  <!-- 右侧详情面板 -->
+  <aside class="detail-panel" id="detailPanel">
+    <div class="detail-close" id="detailClose">×</div>
+    <div class="detail-content" id="detailContent">
+      <div class="detail-placeholder">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="4" y="4" width="40" height="40" rx="8" stroke="#D9D9D9" stroke-width="2" stroke-dasharray="4 4"/><path d="M18 24h12M24 18v12" stroke="#D9D9D9" stroke-width="2" stroke-linecap="round"/></svg>
+        <p>点击任意 Token 查看详情</p>
+      </div>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast">已复制</div>
+  <script src="app.js"></script>
+</body>
+</html>
