@@ -492,6 +492,9 @@
     if (rowEl) rowEl.classList.add('selected');
     // Open panel
     detailPanel.classList.add('open');
+    // Show backdrop on mobile
+    const bd = document.getElementById('detailBackdrop');
+    if (bd && window.innerWidth <= 768) bd.classList.add('show');
     renderDetail(cat, token);
   }
 
@@ -701,10 +704,41 @@
   });
   $('detailClose').addEventListener('click', () => {
     detailPanel.classList.remove('open');
+    const backdrop = $('detailBackdrop');
+    if (backdrop) backdrop.classList.remove('show');
     selectedToken = null;
     mainBody.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
   });
+
+  // Detail backdrop click closes panel
+  const backdrop = $('detailBackdrop');
+  if (backdrop) {
+    backdrop.addEventListener('click', () => {
+      detailPanel.classList.remove('open');
+      backdrop.classList.remove('show');
+      selectedToken = null;
+      mainBody.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
+    });
+  }
+
   $('exportBtn').addEventListener('click', exportTokens);
+
+  // ═══════ MOBILE: Sidebar Toggle ═══════
+  const sidebarToggle = $('sidebarToggle');
+  const sidebar = $('sidebar');
+  function checkMobile() {
+    const mobile = window.innerWidth <= 768;
+    if (sidebarToggle) sidebarToggle.style.display = mobile ? 'flex' : 'none';
+    if (!mobile) sidebar.classList.remove('collapsed');
+  }
+  if (sidebarToggle) {
+    sidebarToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+      sidebarToggle.textContent = sidebar.classList.contains('collapsed') ? '☰' : '✕';
+    });
+  }
+  window.addEventListener('resize', checkMobile);
+  checkMobile();
 
   let searchTimer;
   searchInput.addEventListener('input', () => {

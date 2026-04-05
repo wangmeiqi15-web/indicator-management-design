@@ -8,7 +8,8 @@
 </head>
 <body>
   <!-- 左侧边栏 -->
-  <aside class="sidebar" id="sidebar">
+  <aside class="sidebar collapsed" id="sidebar">
+    <button class="mobile-sidebar-toggle" id="sidebarToggle" style="display:none">☰</button>
     <div class="sidebar-brand">
       <div class="brand-logo"></div>
       <div class="brand-text">
@@ -66,6 +67,7 @@
     </div>
   </aside>
 
+  <div class="detail-backdrop" id="detailBackdrop"></div>
   <div class="toast" id="toast">已复制</div>
   <script src="app.js"></script>
 </body>
